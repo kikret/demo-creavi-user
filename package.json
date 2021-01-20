@@ -1,0 +1,21 @@
+{
+  "name": "demo-creavi-user",
+  "version": "1.0.0",
+  "main": "app.js",
+  "author": "Alexander Toscano Ricardo <kikret@gmail.com> (http://creavi.com)",
+  "description": "Sistema de administracion de usuarios para CreAVI",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.8.12",
+    "validator": "^12.2.0"
+  },
+  "devDependencies": {
+    "env-cmd": "^10.1.0",
+    "nodemon": "^2.0.2"
+  }
+}
