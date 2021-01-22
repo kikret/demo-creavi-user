@@ -1,22 +1,34 @@
-const {
-    postUsers, 
-    login, 
-    logoutall,
-    updateUser, 
-    deleteUser } = require('./bin/user')
+const config = require('./bin/conf')
+const auth = require('./middleware/auth')
 
-//require('./db/db')                              
+const {
+  setUsers,
+  login,
+  logout,
+  logoutall,
+  updateUser,
+  deleteUser, } = require('./bin/user')
+
+require('./db/db')                              
 
 const version = function(){ 
-  console.log('1.0.0');
+  return '1.0.0';
 };
 
 const help = function(){
-  console.log('Esta es la ayuda')
+  return 'Esta es la ayuda';
 }
+
 
 module.exports = { 
   version, 
-  help 
+  help,
+  setUsers,
+  login,
+  logout,
+  logoutall,
+  updateUser,
+  deleteUser,
+  auth
 }
 

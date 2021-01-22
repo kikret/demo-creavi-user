@@ -1,18 +1,70 @@
 const auth = require("../middleware/auth");
+const jwt = require('jsonwebtoken')
 const User = require("../models/User");
 
-const postUsers = async (body) => {
+const setUsers = (body) => new Promise( async (resolve, reject)=>{
   try {
     const user = new User(body);
     await user.save();
-    const token = await user.generateAuthToken();
-    res.status(201).send({ user, token });
-  } catch (error) {
-    res.status(400).send(error);
+    const token = await user.generateAuthToken();    
+    resolve({ value: { user, token } });    
+  } catch (err) {
+    reject(err);    
   }
+});
+
+const login = (body) => new Promise( async (resolve, reject)=>{  
+  try {
+    const { email, password } = body;    
+    const user = await User.findByCredentials(email, password);        
+    const token = await user.generateAuthToken();
+    resolve({ value: token });
+  } catch (err) {
+    reject(err);
+  }
+});
+
+const logout = (body) => new Promise( (resolve, reject)=>{
+  //const token = req.header('Authorization').replace('Bearer ', '')                
+  //const data = jwt.verify(token, process.env.JWT_KEY)                             
+  /*try {
+      const user = await User.findOne({ _id: data._id, 'tokens.token': token })   
+      if (!user) {
+          throw new Error()
+      }
+      req.user = user                                                             
+      req.token = token                                                           
+      next()                                                                      
+  } catch (error) {
+      res.status(401).send({ error: 'No está autorizado para acceder a este recurso' })
+  }*/
+});
+
+const logoutall = (body) => new Promise( (resolve, reject)=>{
+
+});
+
+  
+const updateUser = (body)  => new Promise( (resolve, reject)=>{
+
+});
+
+const deleteUser = (body)  => new Promise( (resolve, reject)=>{
+
+});
+
+module.exports = {
+  setUsers,
+  login,
+  logout,
+  logoutall,
+  updateUser,
+  deleteUser,
 };
 
-const login = async (body) => {
+
+
+/*const login = async (body) => {
   try {
     const { email, password } = body;
     const user = await User.findByCredentials(email, password);
@@ -50,16 +102,4 @@ const logoutall = async (user) => {
       status: false, error;
     }
   }
-};
-
-const updateUser = () => {};
-
-const deleteUser = () => {};
-
-module.exports = {
-  postUsers,
-  login,
-  logoutall,
-  updateUser,
-  deleteUser,
-};
+};*/

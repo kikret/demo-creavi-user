@@ -4,9 +4,13 @@
   "main": "app.js",
   "author": "Alexander Toscano Ricardo <kikret@gmail.com> (http://creavi.com)",
   "description": "Sistema de administracion de usuarios para CreAVI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kikret/demo-creavi-user"
+  },
   "scripts": {
-    "start": "nodemon index.js",
-    "test": "mocha",
+    "dev": "NODE_ENV=development nodemon index.js",    
+    "test": "NODE_ENV=testing mocha --reporter spec",
     "release": "standard-version"
   },
   "license": "MIT",
