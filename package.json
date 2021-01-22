@@ -1,6 +1,6 @@
 {
   "name": "demo-creavi-user",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "app.js",
   "author": "Alexander Toscano Ricardo <kikret@gmail.com> (http://creavi.com)",
   "description": "Sistema de administracion de usuarios para CreAVI",
@@ -9,7 +9,7 @@
     "url": "https://github.com/kikret/demo-creavi-user"
   },
   "scripts": {
-    "dev": "NODE_ENV=development nodemon index.js",    
+    "dev": "NODE_ENV=development nodemon index.js",
     "test": "NODE_ENV=testing mocha --reporter spec",
     "release": "standard-version"
   },
