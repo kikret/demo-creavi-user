@@ -5,9 +5,11 @@ const {
   setUsers,
   login,
   logout,
-  logoutall,
+  logoutAll,
   updateUser,
-  deleteUser, } = require('./bin/user')
+  deleteUser, 
+  refreshToken  
+  } = require('./bin/user')
 
 require('./db/db')                              
 
@@ -26,9 +28,10 @@ module.exports = {
   setUsers,
   login,
   logout,
-  logoutall,
+  logoutAll,
   updateUser,
   deleteUser,
-  auth
+  auth,
+  refreshToken
 }
 

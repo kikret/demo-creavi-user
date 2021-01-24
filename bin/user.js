@@ -17,31 +17,38 @@ const login = (body) => new Promise( async (resolve, reject)=>{
   try {
     const { email, password } = body;    
     const user = await User.findByCredentials(email, password);        
-    const token = await user.generateAuthToken();
+    const token = await user.generateAuthToken();    
     resolve({ value: token });
   } catch (err) {
     reject(err);
   }
 });
 
-const logout = (body) => new Promise( (resolve, reject)=>{
-  //const token = req.header('Authorization').replace('Bearer ', '')                
-  //const data = jwt.verify(token, process.env.JWT_KEY)                             
-  /*try {
-      const user = await User.findOne({ _id: data._id, 'tokens.token': token })   
-      if (!user) {
-          throw new Error()
-      }
-      req.user = user                                                             
-      req.token = token                                                           
-      next()                                                                      
-  } catch (error) {
-      res.status(401).send({ error: 'No está autorizado para acceder a este recurso' })
-  }*/
+const refreshToken = (token) => new Promise( async (resolve, reject)=>{    
+  try{        
+    const refreshToken = await User.refreshAuthToken(token);
+    resolve({ value: refreshToken });
+  }catch (err){    
+    reject(err);
+  }
+})
+
+const logout = (body) => new Promise( async (resolve, reject)=>{
+  try{        
+    const refreshToken = await User.logout(token);
+    resolve({ value: true });
+  }catch (err){    
+    reject(err);
+  }
 });
 
-const logoutall = (body) => new Promise( (resolve, reject)=>{
-
+const logoutAll = (body) => new Promise( async (resolve, reject)=>{
+  try{        
+    const refreshToken = await User.logoutAll(token);
+    resolve({ value: true });
+  }catch (err){    
+    reject(err);
+  }
 });
 
   
@@ -57,9 +64,10 @@ module.exports = {
   setUsers,
   login,
   logout,
-  logoutall,
+  logoutAll,
   updateUser,
   deleteUser,
+  refreshToken
 };
 
 

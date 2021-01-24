@@ -6,6 +6,41 @@
 
     npm i demo-creavi-user
 
+##Setting
+Ceate file creavi.conf.json in the root project. Add the next code and setting:
+
+    {
+        "development": {
+    	    "config_id": "development",
+    	    "app_name": "creavi-Admin",
+    	    "node_port": 3000,
+    	    "json_indentation": 4,
+    	    "database": "mongodb://localhost:27017/creavidev",
+    	    "secret_key": "7EHDWHD9W9UW9FBFB949394BWYFG8WE78A"
+        },
+        "testing": {
+    	    "config_id": "testing",
+    	    "database": "mongodb://localhost:27017/creavitest",
+    	    "secret_key": "7EHDWHD9W9UW9FBFB949394BWYFG8WE78B"
+    	},
+        "staging": {
+    	    "config_id": "staging",
+    	    "node_port": 8080,
+    	    "database": "mongodb://localhost:27017/creavidbstag",
+    	    "secret_key": "7EHDWHD9W9UW9FBFB949394BWYFG8WE78C"
+        },
+        "production": {
+    	    "config_id": "production",
+    	    "node_port": 8080,
+    	    "database": "creavidb",
+    	    "secret_key": "7EHDWHD9W9UW9FBFB949394BWYFG8WE78D"
+        }
+    }
+
+http://travistidwell.com/jsencrypt/demo/
+Key Size: 512 bit
+https://medium.com/@siddharthac6/json-web-token-jwt-the-right-way-of-implementing-with-node-js-65b8915d550e
+
 ## Examples
 
     const  express = require('express')

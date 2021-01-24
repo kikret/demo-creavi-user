@@ -5,7 +5,7 @@ const auth = async(req, res, next) => {
     if(req.header('Authorization')!==undefined){
         const token = req.header('Authorization').replace('Bearer ', '')
         try {
-            const data = jwt.verify(token, global.gConfig.secret_key)
+            const data = jwt.verify(token, global.keys.public_key)
             const user = await User.findOne({ _id: data._id, 'tokens.token': token })   
             if (!user) {
                 throw new Error()
