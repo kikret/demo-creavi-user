@@ -1,6 +1,6 @@
 {
   "name": "demo-creavi-user",
-  "version": "1.2.3",
+  "version": "1.2.4",
   "main": "app.js",
   "author": "Alexander Toscano Ricardo <kikret@gmail.com> (http://creavi.com)",
   "description": "Sistema de administracion de usuarios para CreAVI",
