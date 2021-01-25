@@ -38,9 +38,9 @@ const userSchema = mongoose.Schema({
         }
     }],
     rol:{
-        value: { type: String, default: 6 },
-        user: { type: String, default: "Owner User" },
-        permissions: { type: Array, default: [1, 1, 0] }
+        value: { type: String },
+        user: { type: String },
+        permissions: { type: {} }
     }
 })
 
@@ -60,8 +60,11 @@ userSchema.methods.generateAuthToken = async function() {
     var userData = {
         _id: user._id,
         rol: user.rol,
-        email: user.email
+        email: user.email,
+        permissions: user.permissions
     }
+
+    
 
     // SIGNING OPTIONS
     var signOptions = {

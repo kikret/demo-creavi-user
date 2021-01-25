@@ -15,9 +15,10 @@ global.gConfig = finalConfig;
 const jwt_config = require('../../../jwt.conf.json');
 const expiresIn =jwt_config.expiresIn;
 const algorithm = jwt_config.algorithm;
+const users = jwt_config.users
 const public_key = fs.readFileSync(path.join('./', jwt_config.public_key), "utf8");
 const private_key = fs.readFileSync(path.join('.', jwt_config.private_key), "utf8");
 
-global.keys = { ...{public_key}, ...{private_key}, ...{expiresIn}, ...{algorithm} };
+global.keys = { ...{public_key}, ...{private_key}, ...{expiresIn}, ...{algorithm}, ...{users} };
 
 

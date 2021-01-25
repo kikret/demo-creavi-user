@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken')
 const User = require("../models/User");
 
 const setUsers = (body) => new Promise( async (resolve, reject)=>{
-  try {
-    const user = new User(body);
+  try {    
+    const user = new User(body);    
+    user.rol.permissions = global.keys.users[body.rol.user];    
     await user.save();
     const token = await user.generateAuthToken();    
     resolve({ value: { user, token } });    
